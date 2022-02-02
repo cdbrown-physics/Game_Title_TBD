@@ -34,15 +34,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetButton("Fire1") && currentState != PlayerState.attack)
+        if (Input.GetButton("Fire1") && currentState != PlayerState.attack && currentState != PlayerState.stagger)
         {
             StartCoroutine(AttackCo());
         }
-        else
+        else if (currentState == PlayerState.walk || currentState == PlayerState.idle)
         {
             UpdateAnimationAndMove();
         }
     }
+
     void UpdateAnimationAndMove()
     {
         change = Vector3.zero;
@@ -77,5 +78,30 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("attacking", false);
         yield return new WaitForSeconds(attackAnimationTime);
         currentState = PlayerState.walk;
+    }
+
+    public void Knock(float knockTime, float damage)
+    {
+        currentHealth.RuntimeValue -= damage;
+        playerHealthSignal.Raise();
+        if (currentHealth.RuntimeValue > 0)
+        {
+            StartCoroutine(KnockCo(knockTime));
+        }
+        else
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    private IEnumerator KnockCo(float knockTime)
+    {
+        if (myRigidBody != null)
+        {
+            yield return new WaitForSeconds(knockTime);
+            myRigidBody.velocity = Vector2.zero;
+            currentState = PlayerState.idle;
+            myRigidBody.velocity = Vector2.zero;
+        }
     }
 }

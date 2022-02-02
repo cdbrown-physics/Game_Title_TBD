@@ -18,7 +18,6 @@ public class PlayerHit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision maybe");
         if(collision.CompareTag("breakable"))
         {
             collision.GetComponent<Pot>().Hit();

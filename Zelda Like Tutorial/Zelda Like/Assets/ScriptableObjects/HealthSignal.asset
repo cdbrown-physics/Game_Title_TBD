@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921c40b3d0527be47b86992fa93991a3, type: 3}
   m_Name: HealthSignal
   m_EditorClassIdentifier: 
-  listeners:
-  - {fileID: 0}
+  listeners: []
