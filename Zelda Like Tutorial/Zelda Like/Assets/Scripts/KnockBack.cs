@@ -5,6 +5,7 @@ using UnityEngine;
 public class KnockBack : MonoBehaviour
 {
     public float thrust;
+    public float knockTime;
     // Start is called before the first frame update
 
 
@@ -15,14 +16,22 @@ public class KnockBack : MonoBehaviour
             Rigidbody2D enemy = collition.GetComponent<Rigidbody2D>();
             if (enemy != null)
             {
-                Debug.Log("Hitting the log boy");
                 enemy.isKinematic = false;
                 Vector2 difference = enemy.transform.position - transform.position;
                 difference = difference.normalized * thrust;
-                Debug.Log(difference);
                 enemy.AddForce(difference, ForceMode2D.Impulse);
-                enemy.isKinematic = true;
+                StartCoroutine(KnockCo(enemy));
             }
+        }
+    }
+
+    private IEnumerator KnockCo(Rigidbody2D enemy)
+    {
+        if (enemy != null)
+        {
+            yield return new WaitForSeconds(knockTime);
+            enemy.velocity = Vector2.zero;
+            enemy.isKinematic = true;
         }
     }
 
