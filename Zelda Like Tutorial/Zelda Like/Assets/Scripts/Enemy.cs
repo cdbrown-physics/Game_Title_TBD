@@ -7,7 +7,6 @@ public enum EnemyState
     idle,
     walk,
     attack,
-    chase,
     home,
     sleep,
     stagger
@@ -15,10 +14,28 @@ public enum EnemyState
 
 public class Enemy : MonoBehaviour
 {
+    public EnemyState enemyState;
     public int health;
     public string enemyName;
     public int baseAttack;
     public float moveSpeed;
     // Start is called before the first frame update
-    
+
+
+    public void Knock(Rigidbody2D myRigidbody, float knockTime)
+    {
+        StartCoroutine(KnockCo(myRigidbody, knockTime));
+    }
+    private IEnumerator KnockCo(Rigidbody2D myRigidbody, float knockTime)
+    {
+        if (myRigidbody != null )
+        {
+            yield return new WaitForSeconds(knockTime);
+            myRigidbody.velocity = Vector2.zero;
+            enemyState = EnemyState.idle;
+        }
+    }
+
 }
+
+

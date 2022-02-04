@@ -20,7 +20,6 @@ public class Pot : MonoBehaviour
 
     public void Hit()
     {
-        Debug.Log("hitting the thing?");
         anim.SetBool("Hit", true);
         StartCoroutine(breakCo());
     }

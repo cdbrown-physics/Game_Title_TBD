@@ -14,7 +14,7 @@ public class LogAI : Enemy
     // Use this for initialization
     void Start()
     {
-        //currentState = EnemyState.idle;
+        enemyState = EnemyState.idle;
         myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
@@ -28,13 +28,23 @@ public class LogAI : Enemy
 
     void CheckDistance()
     {
-        if (Vector3.Distance(target.position, transform.position) <= chaseRadius 
-            && Vector3.Distance(target.position, transform.position) > attackRadius)
+        if (Vector3.Distance(target.position, transform.position) <= chaseRadius
+            && Vector3.Distance(target.position, transform.position) > attackRadius
+            && (enemyState == EnemyState.walk || enemyState == EnemyState.idle) )
         {
             //transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
             myRigidbody.MovePosition(temp);
+            ChangeState(EnemyState.walk);
+        }
+    }
+
+    private void ChangeState(EnemyState newState)
+    {
+        if (newState != enemyState)
+        {
+            enemyState = newState;
         }
     }
 }

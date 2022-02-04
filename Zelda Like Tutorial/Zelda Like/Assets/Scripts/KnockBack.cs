@@ -9,27 +9,33 @@ public class KnockBack : MonoBehaviour
     // Start is called before the first frame update
 
 
-    public void OnTriggerEnter2D(Collider2D collition)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collition.gameObject.CompareTag("enemy"))
+        if (collision.CompareTag("breakable") && this.gameObject.CompareTag("Player"))
         {
-            Rigidbody2D enemy = collition.GetComponent<Rigidbody2D>();
-            if (enemy != null)
-            {
-                Vector2 difference = enemy.transform.position - transform.position;
-                difference = difference.normalized * thrust;
-                enemy.AddForce(difference, ForceMode2D.Impulse);
-                StartCoroutine(KnockCo(enemy));
-            }
+            collision.GetComponent<Pot>().Hit();
         }
-    }
 
-    private IEnumerator KnockCo(Rigidbody2D enemy)
-    {
-        if (enemy != null)
+        if (collision.gameObject.CompareTag("enemy") || collision.gameObject.CompareTag("Player"))
         {
-            yield return new WaitForSeconds(knockTime);
-            enemy.velocity = Vector2.zero;
+            Rigidbody2D objectHit = collision.GetComponent<Rigidbody2D>();
+            if (objectHit != null)
+            {
+                Vector2 difference = objectHit.transform.position - transform.position;
+                difference = difference.normalized * thrust;
+                objectHit.AddForce(difference, ForceMode2D.Impulse);
+                if (collision.gameObject.CompareTag("enemy"))
+                {
+                    objectHit.GetComponent<Enemy>().enemyState = EnemyState.stagger;
+                    collision.GetComponent<Enemy>().Knock(objectHit, knockTime);
+                }
+                if (collision.gameObject.CompareTag("Player"))
+                {
+                    objectHit.GetComponent<PlayerMovement>().playerState = PlayerState.stagger;
+                    collision.GetComponent<PlayerMovement>().Knock(knockTime);
+                }
+                
+            }
         }
     }
 

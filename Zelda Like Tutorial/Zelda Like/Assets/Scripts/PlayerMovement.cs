@@ -13,7 +13,7 @@ public enum PlayerState
 
 public class PlayerMovement : MonoBehaviour
 {
-    public PlayerState currentState;
+    public PlayerState playerState;
     public float speed = 4.0f;
     private Rigidbody2D myRigidBody;
     private Vector3 change;
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentState = PlayerState.walk;
+        playerState = PlayerState.idle;
         myRigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         animator.SetFloat("moveX", 0);
@@ -34,11 +34,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetButton("Fire1") && currentState != PlayerState.attack && currentState != PlayerState.stagger)
+        if (Input.GetButton("Fire1") && playerState != PlayerState.attack && playerState != PlayerState.stagger)
         {
             StartCoroutine(AttackCo());
         }
-        else if (currentState == PlayerState.walk || currentState == PlayerState.idle)
+        else if (playerState == PlayerState.walk || playerState == PlayerState.idle)
         {
             UpdateAnimationAndMove();
         }
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         change.x = moveInputX;
         change.y = moveInputY;
 
-        if (change != Vector3.zero && currentState == PlayerState.walk) 
+        if (change != Vector3.zero && (playerState == PlayerState.walk || playerState == PlayerState.idle) )
         {
             MovePlayer();
             animator.SetFloat("moveX", moveInputX);
@@ -73,25 +73,16 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator AttackCo()
     {
         animator.SetBool("attacking", true);
-        currentState = PlayerState.attack;
+        playerState = PlayerState.attack;
         yield return null;
         animator.SetBool("attacking", false);
         yield return new WaitForSeconds(attackAnimationTime);
-        currentState = PlayerState.walk;
+        playerState = PlayerState.walk;
     }
 
-    public void Knock(float knockTime, float damage)
+    public void Knock(float knockTime)
     {
-        currentHealth.RuntimeValue -= damage;
-        playerHealthSignal.Raise();
-        if (currentHealth.RuntimeValue > 0)
-        {
-            StartCoroutine(KnockCo(knockTime));
-        }
-        else
-        {
-            this.gameObject.SetActive(false);
-        }
+        StartCoroutine(KnockCo(knockTime));
     }
 
     private IEnumerator KnockCo(float knockTime)
@@ -100,8 +91,7 @@ public class PlayerMovement : MonoBehaviour
         {
             yield return new WaitForSeconds(knockTime);
             myRigidBody.velocity = Vector2.zero;
-            currentState = PlayerState.idle;
-            myRigidBody.velocity = Vector2.zero;
+            playerState = PlayerState.idle;
         }
     }
 }
