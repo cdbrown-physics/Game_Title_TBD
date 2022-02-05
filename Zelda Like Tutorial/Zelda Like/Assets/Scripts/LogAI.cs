@@ -35,9 +35,47 @@ public class LogAI : Enemy
             //transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
+            changeAnim(temp - transform.position);
             myRigidbody.MovePosition(temp);
             ChangeState(EnemyState.walk);
+            animator.SetBool("wakeUp", true);
         }
+        else if (Vector3.Distance(target.position, transform.position) > chaseRadius)
+        {
+            animator.SetBool("wakeUp", false);
+        }
+    }
+
+    private void changeAnim(Vector2 direction)
+    {
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            if (direction.x > 0)
+            {
+                SetAnimationFloat(Vector2.right);
+            }
+            else
+            {
+                SetAnimationFloat(Vector2.left);
+            }
+        }
+        else if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
+        {
+            if (direction.y > 0)
+            {
+                SetAnimationFloat(Vector2.up);
+            }
+            else
+            {
+                SetAnimationFloat(Vector2.down);
+            }
+        }
+    }
+
+    private void SetAnimationFloat(Vector2 setVector)
+    {
+        animator.SetFloat("moveX", setVector.x);
+        animator.SetFloat("moveY", setVector.y);
     }
 
     private void ChangeState(EnemyState newState)
