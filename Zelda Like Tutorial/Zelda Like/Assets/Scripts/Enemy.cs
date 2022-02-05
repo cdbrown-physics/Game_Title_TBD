@@ -39,7 +39,11 @@ public class Enemy : MonoBehaviour
     public void Knock(Rigidbody2D myRigidbody, float knockTime, int damage)
     {
         TakeDamage(damage);
-        StartCoroutine(KnockCo(myRigidbody, knockTime));
+        if (health > 0)
+        {
+            StartCoroutine(KnockCo(myRigidbody, knockTime));
+        }
+        
     }
     private IEnumerator KnockCo(Rigidbody2D myRigidbody, float knockTime)
     {

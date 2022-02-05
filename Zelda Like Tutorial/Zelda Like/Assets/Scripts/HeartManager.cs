@@ -12,7 +12,7 @@ public class HeartManager : MonoBehaviour
     public Sprite quarterHeart;
     public Sprite emptyHeart;
     public IntValue heartContainers;
-    // public IntValue playerCurrentHealth;
+    public IntValue playerCurrentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -30,32 +30,33 @@ public class HeartManager : MonoBehaviour
         }
     }
 
-    /*
     public void UpdateHearts()
     {
-        float tempHealth = playerCurrentHealth.initialValue / 4;
+        int fullHeartCount = playerCurrentHealth.RuntimeValue / 4; // There are 4 quarter hearts in each heart container. 
+        float fractionHeart = playerCurrentHealth.RuntimeValue % 4;
+
         for (int i = 0; i < heartContainers.initialValue; i++)
         {
-            if (i <= tempHealth - 1)
+            if (i <= fullHeartCount - 1)
             {
                 hearts[i].sprite = fullHeart;
             }
-            else if (i > tempHealth)
+            else if (i > fullHeartCount)
             {
                 hearts[i].sprite = emptyHeart;
             }
             else
             {
                 // Fraction of a heart
-                if (tempHealth % 1 == 0.75)
+                if (fractionHeart == 3)
                 {
                     hearts[i].sprite = threeQuarterHeart;
                 }
-                else if (tempHealth % 1 == 0.5)
+                else if (fractionHeart == 2)
                 {
                     hearts[i].sprite = halfHeart;
                 }
-                else if (tempHealth % 1 == 0.25)
+                else if (fractionHeart == 1)
                 {
                     hearts[i].sprite = quarterHeart;
                 }
@@ -66,5 +67,4 @@ public class HeartManager : MonoBehaviour
             }
         }
     }
-    */
 }
