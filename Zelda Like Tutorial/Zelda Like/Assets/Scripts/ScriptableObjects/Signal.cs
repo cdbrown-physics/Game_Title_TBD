@@ -10,6 +10,8 @@ public class Signal : ScriptableObject
 
     public void Raise()
     {
+        // Going backwards through the list so that if something gets removed then 
+        // we don't get an 'out of bounds' error message. 
         for(int i = listeners.Count -1; i >= 0; i--)
         {
             listeners[i].OnSignalRaised();

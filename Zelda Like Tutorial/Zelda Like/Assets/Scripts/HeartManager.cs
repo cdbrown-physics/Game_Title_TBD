@@ -11,8 +11,8 @@ public class HeartManager : MonoBehaviour
     public Sprite halfHeart;
     public Sprite quarterHeart;
     public Sprite emptyHeart;
-    public FloatValue heartContainers;
-    public FloatValue playerCurrentHealth;
+    public IntValue heartContainers;
+    // public IntValue playerCurrentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,7 @@ public class HeartManager : MonoBehaviour
         }
     }
 
+    /*
     public void UpdateHearts()
     {
         float tempHealth = playerCurrentHealth.initialValue / 4;
@@ -65,4 +66,5 @@ public class HeartManager : MonoBehaviour
             }
         }
     }
+    */
 }
