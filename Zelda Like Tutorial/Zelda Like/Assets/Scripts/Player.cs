@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private float attackAnimationTime = 0.30f;
     public IntValue currentHealth;
     public Signal playerHealthSignal;
+    public VectorValue startingPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
+        transform.position = startingPosition.initialValue;
     }
 
     // Update is called once per frame
