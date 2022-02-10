@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class ObjectInteraction : MonoBehaviour
 {
-    public Signal contextOn;
-    public Signal contextOff;
+    public Signal context;
     public GameObject dialogBox;
     public Text dialogText;
     public string dialog;
@@ -34,19 +33,19 @@ public class ObjectInteraction : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !collision.isTrigger)
         {
-            contextOn.Raise();
+            context.Raise();
             playerInRange = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !collision.isTrigger)
         {
             playerInRange = false;
-            contextOff.Raise();
+            context.Raise();
             if (dialogBox != null)
             {
                 dialogBox.SetActive(false);

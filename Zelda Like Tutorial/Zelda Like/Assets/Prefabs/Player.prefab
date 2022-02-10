@@ -192,7 +192,6 @@ GameObject:
   - component: {fileID: 7563611284141932398}
   - component: {fileID: 2155427916343697338}
   - component: {fileID: 774796152}
-  - component: {fileID: 774796153}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -392,35 +391,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contextClue: {fileID: 7005763220332441866}
+  contextActive: 0
 --- !u!114 &774796152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7563611284141932391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a61aa2f5964e6f47b97be6966a8ea60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 4ead96a3a0316cf4c831b748ae696fb8, type: 2}
-  signalEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2155427916343697338}
-        m_TargetAssemblyTypeName: ContextClue, Assembly-CSharp
-        m_MethodName: Disable
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &774796153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -438,7 +410,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2155427916343697338}
         m_TargetAssemblyTypeName: ContextClue, Assembly-CSharp
-        m_MethodName: Enable
+        m_MethodName: ChangeContext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
