@@ -340,7 +340,22 @@ SpriteAtlas:
   - {fileID: 538826285080647454, guid: 1c9fdb6aa9d3a5242ae5a4308b71ac4c, type: 3}
   - {fileID: 1107736971085435061, guid: 1c9fdb6aa9d3a5242ae5a4308b71ac4c, type: 3}
   - {fileID: -377563455374678323, guid: 1c9fdb6aa9d3a5242ae5a4308b71ac4c, type: 3}
-  - {fileID: 21300000, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: -1790513009360131488, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: 6796940128468367395, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: 7257679221847934946, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: -8018767669905319889, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: 3471414262902695032, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: -5174125284999604879, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: 4411923371137299535, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: -7544729849536096197, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: 109808345321430783, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: -984706229473049029, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: -2757298984738394219, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: -3297999012176952179, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: -6431366237039918707, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: -8922353081226294202, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: 8869442856293547957, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
+  - {fileID: -1466947835845212873, guid: 3f2396eae9b446047a1f659f4ba383bc, type: 3}
   - {fileID: 136123638574666257, guid: 5e36ea2f5e83f5f47b1d154b6e40d60c, type: 3}
   - {fileID: 293919518158258091, guid: 5e36ea2f5e83f5f47b1d154b6e40d60c, type: 3}
   - {fileID: -2417109873707893127, guid: 5e36ea2f5e83f5f47b1d154b6e40d60c, type: 3}
@@ -1984,7 +1999,22 @@ SpriteAtlas:
   - objects_119
   - objects_109
   - objects_108
-  - NPC_test
+  - NPC_test_11
+  - NPC_test_10
+  - NPC_test_13
+  - NPC_test_12
+  - NPC_test_6
+  - NPC_test_7
+  - NPC_test_4
+  - NPC_test_5
+  - NPC_test_2
+  - NPC_test_3
+  - NPC_test_0
+  - NPC_test_1
+  - NPC_test_8
+  - NPC_test_9
+  - NPC_test_15
+  - NPC_test_14
   - Overworld_827
   - Overworld_837
   - Overworld_847
