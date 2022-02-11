@@ -154,8 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94645e704dab514e8db964bb4e54589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contextOn: {fileID: 11400000, guid: 7dbdf84d0b16d1b4db49219547066415, type: 2}
-  contextOff: {fileID: 11400000, guid: 4ead96a3a0316cf4c831b748ae696fb8, type: 2}
+  context: {fileID: 11400000, guid: 7dbdf84d0b16d1b4db49219547066415, type: 2}
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: 
