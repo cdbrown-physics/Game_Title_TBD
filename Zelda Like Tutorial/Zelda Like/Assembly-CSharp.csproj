@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\Signal.cs" />
     <Compile Include="Assets\Scripts\Sign.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\ObjectInteraction.cs" />
     <Compile Include="Assets\Scripts\ContextClue.cs" />
     <Compile Include="Assets\Scripts\RoomMove.cs" />
     <Compile Include="Assets\Scripts\LogAI.cs" />
@@ -74,7 +75,7 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\SceneTransition.cs" />
     <Compile Include="Assets\Scripts\NpcDialogue.cs" />
-    <Compile Include="Assets\Scripts\ObjectInteraction.cs" />
+    <Compile Include="Assets\Scripts\BigChest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
