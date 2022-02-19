@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     public IntValue currentHealth;
     public Signal playerHealthSignal;
     public VectorValue startingPosition;
+    public Inventory playerInventory;
+    public SpriteRenderer recievedItemSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (playerState == PlayerState.interact)
+        {
+            return;
+        }
         if (Input.GetButton("Fire1") && playerState != PlayerState.attack && playerState != PlayerState.stagger)
         {
             StartCoroutine(AttackCo());
@@ -44,6 +50,27 @@ public class Player : MonoBehaviour
         {
             UpdateAnimationAndMove();
         }
+    }
+
+    public void RaiseItem()
+    {
+        if (playerInventory.currentItem != null)
+        {
+            if (playerState != PlayerState.interact)
+            {
+                animator.SetBool("recieveItem", true);
+                playerState = PlayerState.interact;
+                recievedItemSprite.sprite = playerInventory.currentItem.itemSprite;
+            }
+            else
+            {
+                animator.SetBool("recieveItem", false);
+                playerState = PlayerState.idle;
+                recievedItemSprite.sprite = null;
+                playerInventory.currentItem = null;
+            }
+        }
+        
     }
 
     void UpdateAnimationAndMove()
@@ -79,7 +106,10 @@ public class Player : MonoBehaviour
         yield return null;
         animator.SetBool("attacking", false);
         yield return new WaitForSeconds(attackAnimationTime);
-        playerState = PlayerState.walk;
+        if (playerState != PlayerState.interact)
+        {
+            playerState = PlayerState.walk;
+        }
     }
 
     public void Knock(float knockTime, int damage)

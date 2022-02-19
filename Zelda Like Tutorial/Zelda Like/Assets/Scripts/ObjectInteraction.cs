@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class ObjectInteraction : MonoBehaviour
 {
     public Signal context;
-    public GameObject dialogBox;
-    public Text dialogText;
     public string dialog;
     public bool playerInRange;
     // Start is called before the first frame update
@@ -19,17 +17,7 @@ public class ObjectInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && playerInRange)
-        {
-            if (dialogBox.activeInHierarchy)
-            {
-                dialogBox.SetActive(false);
-            }
-            else
-            {
-                dialogBox.SetActive(true);
-            }
-        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -45,11 +33,6 @@ public class ObjectInteraction : MonoBehaviour
         if (collision.CompareTag("Player") && !collision.isTrigger)
         {
             playerInRange = false;
-            context.Raise();
-            if (dialogBox != null)
-            {
-                dialogBox.SetActive(false);
-            }   
         }
     }
 }

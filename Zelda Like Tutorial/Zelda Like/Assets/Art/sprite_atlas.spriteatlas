@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: a4892b49f4caaf64b9c4a1bff0169307, type: 3}
-    totalSpriteSurfaceArea: 836470
+    totalSpriteSurfaceArea: 836662
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -212,6 +212,7 @@ SpriteAtlas:
   - {fileID: -1986772863260763996, guid: 1c9fdb6aa9d3a5242ae5a4308b71ac4c, type: 3}
   - {fileID: 5760800594879907098, guid: 1c9fdb6aa9d3a5242ae5a4308b71ac4c, type: 3}
   - {fileID: 7597474578557255370, guid: 1c9fdb6aa9d3a5242ae5a4308b71ac4c, type: 3}
+  - {fileID: -627648684984592141, guid: 1c9fdb6aa9d3a5242ae5a4308b71ac4c, type: 3}
   - {fileID: -5331891938937075238, guid: 1c9fdb6aa9d3a5242ae5a4308b71ac4c, type: 3}
   - {fileID: 5669174570125229846, guid: 1c9fdb6aa9d3a5242ae5a4308b71ac4c, type: 3}
   - {fileID: 6009673603605094513, guid: 1c9fdb6aa9d3a5242ae5a4308b71ac4c, type: 3}
@@ -1871,6 +1872,7 @@ SpriteAtlas:
   - objects_71
   - objects_70
   - objects_73
+  - objects_72
   - objects_75
   - objects_74
   - objects_77
